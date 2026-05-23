@@ -7,7 +7,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
       <Navbar />
       
       {/* The flex-grow class pushes the footer to the bottom if the page content is short */}
-      <main className="flex-grow">
+      <main className="flex-grow pt-28 lg:pt-29">
         {children}
       </main>
       
