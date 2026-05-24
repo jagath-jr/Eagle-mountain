@@ -1,5 +1,8 @@
 import Hero from '@/components/public/Hero';
 import Services from '@/components/public/Services';
+import AboutStats from '@/components/public/AboutStats';
+import WhyChooseUs from '@/components/public/WhyChooseUs';
+import HowItWorks from '@/components/public/HowItWorks';
 
 export default function HomePage() {
   return (
@@ -11,10 +14,14 @@ export default function HomePage() {
       {/* 2. SERVICES CARDS SECTION */}
       <Services />
 
-      {/* 3. Placeholder for the next section... */}
-      <section className="bg-white py-40 px-6 lg:px-12 text-center">
-        <h2>More content goes here...</h2>
-      </section>
+      {/* 3. ABOUT, STATS & CONTACT BANNER SECTION */}
+      <AboutStats />
+
+      {/* 4. WHY CHOOSE US SECTION */}
+      <WhyChooseUs />
+
+      {/* 5. PROCESS & LOGO SLIDER SECTION */}
+      <HowItWorks />
 
     </div>
   );
