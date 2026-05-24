@@ -63,7 +63,9 @@ export default function Navbar() {
     }
   }, [isOpen]);
 
+  // Added 'Home' to the beginning of the array
   const navLinks = [
+    { name: 'Home', href: '/' },
     { name: 'About Us', href: '/about' },
     { name: 'Expertise', href: '/expertise' },
     { name: 'Equipment', href: '/equipment' },
@@ -96,7 +98,7 @@ export default function Navbar() {
       {/* Main Navigation Bar */}
       <nav className="bg-white py-4 px-6 lg:px-12 flex justify-between items-center border-b">
         
-        {/* Left Side: Logo (Added 'nav-item' class) */}
+        {/* Left Side: Logo */}
         <div className="flex-shrink-0 nav-item opacity-0">
            <Link href="/" className="text-2xl font-bold text-[#254b80] tracking-wider">
              LOGO
@@ -109,7 +111,6 @@ export default function Navbar() {
             <Link 
               key={link.name}
               href={link.href} 
-              // Added 'nav-item opacity-0' class here
               className="nav-item opacity-0 text-[#648ecc] font-medium hover:text-[#254b80] transition-colors"
             >
               {link.name}
@@ -118,7 +119,6 @@ export default function Navbar() {
           
           <Link 
             href="/schedule" 
-            // Added 'nav-item opacity-0' class here
             className="nav-item opacity-0 bg-[#254b80] text-white px-6 py-2.5 rounded-md font-medium hover:bg-[#1a3861] transition-colors ml-2"
           >
             Schedule Now
@@ -146,7 +146,6 @@ export default function Navbar() {
               key={link.name}
               href={link.href} 
               onClick={() => setIsOpen(false)}
-              // Added 'mobile-nav-item opacity-0' class here
               className="mobile-nav-item opacity-0 text-[#648ecc] font-medium hover:text-[#254b80] transition-colors block border-b border-gray-50 pb-2"
             >
               {link.name}
@@ -155,7 +154,6 @@ export default function Navbar() {
           <Link 
             href="/schedule" 
             onClick={() => setIsOpen(false)}
-            // Added 'mobile-nav-item opacity-0' class here
             className="mobile-nav-item opacity-0 bg-[#254b80] text-white px-4 py-3 rounded-md font-medium hover:bg-[#1a3861] transition-colors text-center mt-2 w-full"
           >
             Schedule Now

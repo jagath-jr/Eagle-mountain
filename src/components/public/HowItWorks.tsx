@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -15,16 +16,21 @@ export default function HowItWorks() {
   const sectionRef = useRef<HTMLElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
 
-  // Initialize the drag/swipe carousel with auto-play
+  // Initialize the carousel with Autoplay
   const [emblaRef] = useEmblaCarousel(
     { loop: true, dragFree: true }, 
-    [Autoplay({ delay: 3000, stopOnInteraction: false })]
+    [
+      Autoplay({ 
+        delay: 2500, // Time in milliseconds before sliding to the next logo
+        stopOnInteraction: false, // Keeps playing even after the user swipes
+        stopOnMouseEnter: true // Pauses when the user hovers over a logo
+      })
+    ]
   );
 
   useEffect(() => {
     if (!sectionRef.current) return;
 
-    // Staggered slide-up animation for the process cards
     if (cardsRef.current.length > 0) {
       gsap.fromTo(
         cardsRef.current,
@@ -52,8 +58,13 @@ export default function HowItWorks() {
     { step: "Step 4", title: "Completion" },
   ];
 
-  // Placeholder names for the logos
-  const clients = ["Amana", "DAIKIN", "Honeywell", "LENNOX", "Carrier", "Trane", "Rheem"];
+  const clients = [
+    { name: "Amana", src: "/logo-amana.png" },
+    { name: "Daikin", src: "/logo-daikin.png" },
+    { name: "Honeywell", src: "/logo-honeywell.png" },
+    { name: "Lennox", src: "/logo-lennox.png" },
+    { name: "Carrier", src: "/logo-carrier.png" }
+  ];
 
   return (
     <section ref={sectionRef} className="w-full flex flex-col font-sans">
@@ -69,9 +80,7 @@ export default function HowItWorks() {
       </div>
 
       {/* Fixed Parallax Background Section */}
-      {/* Note: Place a process-bg.jpg image in your public folder */}
       <div className="relative w-full py-20 px-6 lg:px-12 bg-[url('/process-bg.jpg')] bg-cover bg-center bg-no-repeat bg-fixed">
-        {/* Dark overlay to make cards stand out */}
         <div className="absolute inset-0 bg-black/20"></div>
 
         <div className="relative z-10 max-w-7xl mx-auto">
@@ -80,7 +89,6 @@ export default function HowItWorks() {
             {steps.map((process, idx) => (
               <div key={idx} className="relative w-full lg:w-1/4 flex items-center group">
                 
-                {/* The Process Card */}
                 <div 
                   ref={(el) => { cardsRef.current[idx] = el; }}
                   className="bg-[#648ecc]/95 backdrop-blur-md p-8 rounded-xl shadow-xl w-full border border-white/10 transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:bg-[#537cba]/95 cursor-default"
@@ -96,7 +104,6 @@ export default function HowItWorks() {
                   </p>
                 </div>
 
-                {/* Arrow Connector (Hidden on Mobile, visible on Desktop) */}
                 {idx < steps.length - 1 && (
                   <div className="hidden lg:flex absolute -right-6 top-1/2 -translate-y-1/2 z-20 text-white opacity-80">
                     <ArrowRight size={28} strokeWidth={2} />
@@ -113,16 +120,19 @@ export default function HowItWorks() {
       <div className="bg-white py-12 px-6 lg:px-12 border-b border-gray-100">
         <div className="max-w-7xl mx-auto overflow-hidden cursor-grab active:cursor-grabbing" ref={emblaRef}>
           <div className="flex items-center gap-12 sm:gap-20">
-            {/* We map through the clients array twice to ensure seamless infinite looping */}
-            {[...clients, ...clients].map((client, idx) => (
+            {/* The array is mapped 4 times to ensure a massive strip, preventing visible snapping at the end of the loop */}
+            {[...clients, ...clients, ...clients, ...clients].map((client, idx) => (
               <div 
                 key={idx} 
-                className="flex-[0_0_auto] min-w-[120px] sm:min-w-[150px] flex justify-center items-center opacity-60 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0"
+                className="flex-[0_0_auto] min-w-[120px] sm:min-w-[150px] flex justify-center items-center transition-transform duration-300 hover:scale-110 relative h-16 cursor-pointer"
               >
-                {/* Replace this div with an actual <Image /> tag when you have the logo files */}
-                <div className="text-2xl font-bold text-[#0b1c2f] italic">
-                  {client}
-                </div>
+                <Image
+                  src={client.src}
+                  alt={`${client.name} logo`}
+                  fill
+                  className="object-contain"
+                  sizes="(max-width: 768px) 120px, 150px"
+                />
               </div>
             ))}
           </div>
