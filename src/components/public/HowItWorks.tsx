@@ -8,6 +8,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 
+// Safely register ScrollTrigger for Next.js SSR
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
@@ -15,15 +16,19 @@ if (typeof window !== 'undefined') {
 export default function HowItWorks() {
   const sectionRef = useRef<HTMLElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+  
+  // Refs for the Parallax Effect
+  const parallaxContainerRef = useRef<HTMLDivElement>(null);
+  const bgRef = useRef<HTMLDivElement>(null);
 
   // Initialize the carousel with Autoplay
   const [emblaRef] = useEmblaCarousel(
     { loop: true, dragFree: true }, 
     [
       Autoplay({ 
-        delay: 2500, // Time in milliseconds before sliding to the next logo
-        stopOnInteraction: false, // Keeps playing even after the user swipes
-        stopOnMouseEnter: true // Pauses when the user hovers over a logo
+        delay: 2500,
+        stopOnInteraction: false, 
+        stopOnMouseEnter: true 
       })
     ]
   );
@@ -31,24 +36,48 @@ export default function HowItWorks() {
   useEffect(() => {
     if (!sectionRef.current) return;
 
-    if (cardsRef.current.length > 0) {
-      gsap.fromTo(
-        cardsRef.current,
-        { opacity: 0, y: 60 },
-        {
-          opacity: 1, 
-          y: 0, 
-          duration: 0.8, 
-          stagger: 0.2, 
-          ease: 'back.out(1.2)',
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top 60%',
-            toggleActions: 'play none none none'
+    // Using gsap.context for React cleanup to prevent glitches
+    const ctx = gsap.context(() => {
+      
+      // 1. Staggered slide-up animation for process cards
+      if (cardsRef.current.length > 0) {
+        gsap.fromTo(
+          cardsRef.current,
+          { opacity: 0, y: 60 },
+          {
+            opacity: 1, 
+            y: 0, 
+            duration: 0.8, 
+            stagger: 0.2, 
+            ease: 'back.out(1.2)',
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: 'top 60%',
+              toggleActions: 'play none none none'
+            }
           }
-        }
-      );
-    }
+        );
+      }
+
+      // 2. BULLETPROOF UPWARD Parallax Background Effect
+      if (bgRef.current && parallaxContainerRef.current) {
+        gsap.to(bgRef.current, {
+          yPercent: -20, // Moves up safely within the 30% extra space provided by h-[130%]
+          ease: 'none',
+          scrollTrigger: {
+            trigger: parallaxContainerRef.current,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: true,
+          }
+        });
+      }
+
+    }); 
+
+    // Clean up all GSAP animations when the component unmounts
+    return () => ctx.revert();
+    
   }, []);
 
   const steps = [
@@ -79,9 +108,18 @@ export default function HowItWorks() {
         </h2>
       </div>
 
-      {/* Fixed Parallax Background Section */}
-      <div className="relative w-full py-20 px-6 lg:px-12 bg-[url('/process-bg.jpg')] bg-cover bg-center bg-no-repeat bg-fixed">
-        <div className="absolute inset-0 bg-black/20"></div>
+      {/* Dynamic UPWARD Parallax Background Section */}
+      <div 
+        ref={parallaxContainerRef}
+        // INCREASED padding to show more of your image, completely transparent background
+        className="relative w-full py-24 lg:py-32 px-6 lg:px-12 overflow-hidden"
+      >
+        {/* The Parallax Background Image */}
+        <div 
+          ref={bgRef}
+          // h-[130%] gives a massive 30% safety buffer at the bottom
+          className="absolute top-0 left-0 w-full h-[130%] bg-[url('/process-bg.jpg')] bg-cover bg-center bg-no-repeat"
+        ></div>
 
         <div className="relative z-10 max-w-7xl mx-auto">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-4 relative">
@@ -89,6 +127,7 @@ export default function HowItWorks() {
             {steps.map((process, idx) => (
               <div key={idx} className="relative w-full lg:w-1/4 flex items-center group">
                 
+                {/* The Process Card */}
                 <div 
                   ref={(el) => { cardsRef.current[idx] = el; }}
                   className="bg-[#648ecc]/95 backdrop-blur-md p-8 rounded-xl shadow-xl w-full border border-white/10 transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:bg-[#537cba]/95 cursor-default"
@@ -104,6 +143,7 @@ export default function HowItWorks() {
                   </p>
                 </div>
 
+                {/* Arrow Connector (Hidden on Mobile, visible on Desktop) */}
                 {idx < steps.length - 1 && (
                   <div className="hidden lg:flex absolute -right-6 top-1/2 -translate-y-1/2 z-20 text-white opacity-80">
                     <ArrowRight size={28} strokeWidth={2} />
@@ -120,7 +160,7 @@ export default function HowItWorks() {
       <div className="bg-white py-12 px-6 lg:px-12 border-b border-gray-100">
         <div className="max-w-7xl mx-auto overflow-hidden cursor-grab active:cursor-grabbing" ref={emblaRef}>
           <div className="flex items-center gap-12 sm:gap-20">
-            {/* The array is mapped 4 times to ensure a massive strip, preventing visible snapping at the end of the loop */}
+            {/* Array mapped 4 times to ensure a massive strip, preventing visible snapping */}
             {[...clients, ...clients, ...clients, ...clients].map((client, idx) => (
               <div 
                 key={idx} 

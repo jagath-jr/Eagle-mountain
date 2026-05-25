@@ -2,8 +2,16 @@
 
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+// Safely register ScrollTrigger for Next.js
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 export default function Hero() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const bgRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLDivElement>(null);
 
@@ -23,13 +31,36 @@ export default function Hero() {
       { opacity: 0, x: 50 },
       { opacity: 1, x: 0, duration: 0.8, ease: 'power3.out', delay: 0.6 }
     );
+
+    // 3. Smooth Parallax Background Effect
+    if (bgRef.current && sectionRef.current) {
+      gsap.to(bgRef.current, {
+        yPercent: 50, // Pushes the image down slowly as you scroll
+        ease: 'none',
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top top', // Start the animation when the hero is at the top of the screen
+          end: 'bottom top', // End when the hero scrolls out of view
+          scrub: true, // Smoothly ties the animation to the scrollbar
+        }
+      });
+    }
   }, []);
 
   return (
     <section 
-      // The 'bg-fixed' class is what creates the stable/parallax scrolling effect!
-      className="relative w-full min-h-[85vh] flex items-center justify-center bg-[url('/hero-bg.jpg')] bg-cover bg-center bg-no-repeat bg-fixed"
+      ref={sectionRef}
+      // Replaced the background classes with 'overflow-hidden' to trap the parallax image
+      className="relative w-full min-h-[85vh] flex items-center justify-center overflow-hidden bg-[#0b1c2f]"
     >
+      {/* The Parallax Background Image 
+        It is larger than the section (130% height) to give it room to scroll smoothly 
+      */}
+      <div 
+        ref={bgRef}
+        className="absolute -top-[15%] left-0 w-full h-[130%] bg-[url('/hero-bg.jpg')] bg-cover bg-center bg-no-repeat"
+      ></div>
+
       {/* Blue overlay to make the text readable over the busy background */}
       <div className="absolute inset-0 bg-[#254b80]/50 mix-blend-multiply"></div>
       
@@ -41,7 +72,7 @@ export default function Hero() {
             Heavy Equipment & <br/> Industrial Solutions
           </h1>
           <p className="text-lg md:text-xl text-gray-100 max-w-lg drop-shadow-md">
-            We Provide Supporting Construction, Energy, Infrastructure, and Industrial Projects with Reliable Equipment & Professional Service
+            We Provide Supporting Construction, Energy, Infrastructure, and Industrial Projects with Reliable Equipment & professional service.
           </p>
         </div>
 
@@ -70,7 +101,7 @@ export default function Hero() {
             <select className="w-full px-4 py-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-[#648ecc] outline-none text-gray-600 bg-white">
               <option>Select service</option>
               <option>Crane Rental</option>
-              <option>Access Equipments</option>
+              <option>Access Equipment</option>
               <option>Forklifts</option>
             </select>
             <button 
