@@ -35,13 +35,13 @@ export default function Hero() {
     // 3. Smooth Parallax Background Effect
     if (bgRef.current && sectionRef.current) {
       gsap.to(bgRef.current, {
-        yPercent: 50, // Pushes the image down slowly as you scroll
+        yPercent: 50,
         ease: 'none',
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: 'top top', // Start the animation when the hero is at the top of the screen
-          end: 'bottom top', // End when the hero scrolls out of view
-          scrub: true, // Smoothly ties the animation to the scrollbar
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true,
         }
       });
     }
@@ -50,12 +50,9 @@ export default function Hero() {
   return (
     <section 
       ref={sectionRef}
-      // Replaced the background classes with 'overflow-hidden' to trap the parallax image
       className="relative w-full min-h-[85vh] flex items-center justify-center overflow-hidden bg-[#0b1c2f]"
     >
-      {/* The Parallax Background Image 
-        It is larger than the section (130% height) to give it room to scroll smoothly 
-      */}
+      {/* The Parallax Background Image */}
       <div 
         ref={bgRef}
         className="absolute -top-[15%] left-0 w-full h-[130%] bg-[url('/hero-bg.jpg')] bg-cover bg-center bg-no-repeat"
@@ -76,33 +73,33 @@ export default function Hero() {
           </p>
         </div>
 
-        {/* Right Side: Request a Quote Form (Frosted Glass Effect) */}
+        {/* Right Side: Request a Quote Form (Increased transparency) */}
         <div 
           ref={formRef} 
-          className="bg-white/80 backdrop-blur-md p-8 md:p-10 rounded-xl shadow-2xl border border-white/40 max-w-md ml-auto w-full"
+          className="bg-white/20 backdrop-blur-md p-8 md:p-10 rounded-xl shadow-2xl border border-white/30 max-w-md ml-auto w-full"
         >
           <h3 className="text-2xl font-bold text-[#0b1c2f] mb-6">Request a Quote</h3>
           <form className="space-y-4">
             <input 
               type="text" 
               placeholder="Name" 
-              className="w-full px-4 py-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-[#648ecc] outline-none text-gray-800" 
+              className="w-full px-4 py-3 rounded-md bg-white backdrop-blur-sm border border-white/40 text-[#0b1c2f] placeholder:text-[#0b1c2f]/70 focus:ring-2 focus:ring-white/50 outline-none" 
             />
             <input 
               type="email" 
               placeholder="Email" 
-              className="w-full px-4 py-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-[#648ecc] outline-none text-gray-800" 
+              className="w-full px-4 py-3 rounded-md bg-white backdrop-blur-sm border border-white/40 text-[#0b1c2f] placeholder:text-[#0b1c2f]/70 focus:ring-2 focus:ring-white/50 outline-none" 
             />
             <input 
               type="tel" 
               placeholder="Phone" 
-              className="w-full px-4 py-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-[#648ecc] outline-none text-gray-800" 
+              className="w-full px-4 py-3 rounded-md bg-white backdrop-blur-sm border border-white/40 text-[#0b1c2f] placeholder:text-[#0b1c2f]/70 focus:ring-2 focus:ring-white/50 outline-none" 
             />
-            <select className="w-full px-4 py-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-[#648ecc] outline-none text-gray-600 bg-white">
-              <option>Select service</option>
-              <option>Crane Rental</option>
-              <option>Access Equipment</option>
-              <option>Forklifts</option>
+            <select className="w-full px-4 py-3 rounded-md bg-white backdrop-blur-sm border border-white/40 text-[#0b1c2f] focus:ring-2 focus:ring-white/50 outline-none">
+              <option className="text-gray-800 bg-white">Cranes</option>
+              <option className="text-gray-800 bg-white">Access Equipment</option>
+              <option className="text-gray-800 bg-white">Access Equipment</option>
+              <option className="text-gray-800 bg-white">Forklifts</option>
             </select>
             <button 
               type="button"
