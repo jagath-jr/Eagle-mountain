@@ -85,7 +85,7 @@ export default function ProjectsPage() {
         1. FIXED BACKGROUND IMAGE (Parallax)
         ========================================
       */}
-      <div className="fixed top-0 left-0 w-full h-screen -z-10 bg-[#1e345853]">
+      <div className="fixed top-0 left-0 w-full h-screen -z-10 bg-[linear-gradient(75.04deg,#234982_0%,rgba(35,73,130,0)_100%)]">
         <Image
           src="project-page-hero.webp"
           alt="Engineering Projects"
