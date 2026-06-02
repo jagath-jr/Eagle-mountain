@@ -45,7 +45,7 @@ const slideInRight: Variants = {
   visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: "easeOut" } },
 };
 
-// New variant for the Masonry Grid to stagger and slide
+// Variant for the Masonry Grid to stagger and slide
 const masonryContainer: Variants = {
   hidden: { opacity: 0, x: 40 },
   visible: { 
@@ -59,7 +59,7 @@ const masonryContainer: Variants = {
   },
 };
 
-// New zoom-in variant for the individual boxes
+// Zoom-in variant for the individual boxes
 const zoomInBox: Variants = {
   hidden: { opacity: 0, scale: 0.8 },
   visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: "easeOut" } },
@@ -93,27 +93,17 @@ const features = [
   }
 ];
 
-// --- Dummy Logo Data ---
-const logos = [
-  "https://images.unsplash.com/photo-1614680376593-902f74cf0d41?q=80&w=400&auto=format&fit=crop", 
-  "https://images.unsplash.com/photo-1614680376408-81e91ffe3db7?q=80&w=400&auto=format&fit=crop", 
-  "https://images.unsplash.com/photo-1614680376573-3f1ce4a8966e?q=80&w=400&auto=format&fit=crop", 
-  "https://images.unsplash.com/photo-1614680376739-414fae5479ec?q=80&w=400&auto=format&fit=crop", 
-  "https://images.unsplash.com/photo-1614680376408-81e91ffe3db7?q=80&w=400&auto=format&fit=crop", 
-  "https://images.unsplash.com/photo-1614680376593-902f74cf0d41?q=80&w=400&auto=format&fit=crop", 
-];
-
 export default function AboutPage() {
   return (
-    <main className="relative min-h-screen bg-white">
+    <main className="relative min-h-screen ">
       
       {/* ========================================
         1. FIXED BACKGROUND IMAGE (Parallax)
         ========================================
       */}
-      <div className="fixed top-0 left-0 w-full h-screen -z-10 bg-[#1e3458]">
+      <div className="fixed top-0 left-0 w-full h-screen -z-10 bg-[linear-gradient(75.04deg,#234982_0%,rgba(35,73,130,0)_100%)]">
         <Image
-          src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2071&auto=format&fit=crop"
+          src="/about-us-hero.webp"
           alt="About Us Background"
           fill
           className="object-cover opacity-30 mix-blend-multiply"
@@ -217,7 +207,7 @@ export default function AboutPage() {
               <div className="flex flex-col gap-4 lg:gap-6">
                 <motion.div variants={zoomInBox} className="relative w-full h-48 md:h-56 rounded-2xl overflow-hidden shadow-sm">
                   <Image 
-                    src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2071&auto=format&fit=crop" 
+                    src="/about-us-section2.webp" 
                     alt="Planning and Hardhat" 
                     fill 
                     className="object-cover" 
@@ -241,7 +231,7 @@ export default function AboutPage() {
                 </motion.div>
                 <motion.div variants={zoomInBox} className="relative w-full h-48 md:h-56 rounded-2xl overflow-hidden shadow-sm">
                   <Image 
-                    src="https://images.unsplash.com/photo-1581094288338-2314dddb7ece?q=80&w=2070&auto=format&fit=crop" 
+                    src="/about-us-section2-01.webp" 
                     alt="Engineers collaborating" 
                     fill 
                     className="object-cover" 
@@ -290,26 +280,20 @@ export default function AboutPage() {
           {/* --- SECTION 3: THE INDUSTRIES WE WORK WITH --- */}
           <section className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             
-            {/* Left: Logos Grid */}
+            {/* Left: Single Industry Image */}
             <motion.div 
               variants={slideInLeft}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.2 }}
-              className="order-2 lg:order-1 grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8"
+              className="order-2 lg:order-1 relative w-full h-[300px] lg:h-[400px] rounded-2xl overflow-hidden shadow-md group"
             >
-              {logos.map((logo, index) => (
-                <div key={index} className="bg-white border border-gray-100 rounded-xl h-24 flex items-center justify-center p-4 shadow-sm hover:shadow-md transition-shadow grayscale hover:grayscale-0">
-                  <div className="relative w-full h-full opacity-60 hover:opacity-100 transition-opacity">
-                     <Image 
-                        src={logo} 
-                        alt={`Client Logo ${index + 1}`} 
-                        fill 
-                        className="object-contain mix-blend-multiply" 
-                     />
-                  </div>
-                </div>
-              ))}
+              <Image 
+                src="aboutl-us-services.png" 
+                alt="Industries We Work With" 
+                fill 
+                className="object-cover transition-transform duration-700 group-hover:scale-105" 
+              />
             </motion.div>
 
             {/* Right: Text Content */}

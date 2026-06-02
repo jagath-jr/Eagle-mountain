@@ -41,13 +41,13 @@ const expertiseAreas = [
     id: 1,
     title: "Heavy Lifting Solutions",
     description: "Heavy lifting operations require precision, planning, and specialized equipment. Eagle Mountain provides crane solutions for structural steel erection, equipment installation, infrastructure development, and industrial construction projects.",
-    image: "https://images.unsplash.com/photo-1541888086425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop",
+    image: "/expertise-page-heavy-lifting-solutions.webp",
   },
   {
     id: 2,
     title: "Material Handling Solutions",
     description: "Efficient movement of materials is critical to every operation. Our forklift and material handling services help businesses improve productivity while maintaining safety and operational efficiency.",
-    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2070&auto=format&fit=crop",
+    image: "/expertise-page-material-handling-solutions.webp",
   },
   {
     id: 3,
@@ -65,7 +65,7 @@ const expertiseAreas = [
     id: 5,
     title: "Warehouse & Storage Solutions",
     description: "Our warehousing and storage services provide secure and organized support for industrial operations, equipment management, and project logistics.",
-    image: "https://images.unsplash.com/photo-1565610222536-f8d152549244?q=80&w=2071&auto=format&fit=crop",
+    image: "/expertise-page-warehouse-storage-solutions.webp",
   },
   {
     id: 6,
@@ -165,7 +165,7 @@ export default function ExpertisePage() {
                 className="relative w-full h-[300px] md:h-[400px] rounded-2xl overflow-hidden shadow-sm"
               >
                 <Image 
-                  src="https://images.unsplash.com/photo-1572025442646-866d16c84a54?q=80&w=2070&auto=format&fit=crop" 
+                  src="/expertise-page-section1-0.webp" 
                   alt="Our Expertise Overview" 
                   fill 
                   className="object-cover" 
