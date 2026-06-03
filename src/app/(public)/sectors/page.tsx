@@ -36,49 +36,49 @@ const sectors = [
     id: 1,
     title: "Construction",
     subtitle: "Building the Future with Reliable Equipment Solutions",
-    description: "Eagle Mountain supports commercial, residential, and industrial construction projects with a comprehensive range of equipment and operational solutions. Our capabilities in heavy lifting, material handling, and transport enable project teams to meet development demands efficiently, safely, and on schedule. From site preparation and structural installations to equipment mobilization and logistical support, we provide reliable resources that contribute to successful project delivery.",
-    image: "https://images.unsplash.com/photo-1541888086425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop",
+    description: "Eagle Mountain supports commercial, residential, and industrial construction projects with a comprehensive range of equipment and operational services. Our expertise in heavy lifting, material handling, transportation, and site support enables contractors and developers to execute projects safely, efficiently, and on schedule. From site preparation and structural installation to equipment mobilization and logistics coordination, we provide dependable solutions that contribute to successful project delivery.",
+    image: "/sector-construction.webp",
   },
   {
     id: 2,
     title: "Infrastructure",
     subtitle: "Supporting Large-Scale Development Projects",
-    description: "Eagle Mountain plays a vital role in supporting infrastructure developments that drive the region's growth and economic expansion. We provide specialized equipment and operational support for road networks, bridges, airports, utilities, and major civil engineering projects. Our highly trained teams and modern equipment fleet ensure safe, compliant, and efficient logistics solutions that meet the demands of complex infrastructure projects while maintaining the highest safety standards.",
+    description: "Eagle Mountain plays a vital role in supporting infrastructure developments that drive economic growth and community development. We provide specialized equipment and operational support for roads, bridges, airports, utilities, rail networks, and civil engineering projects. Our experienced team and modern equipment fleet ensure efficient lifting, transportation, and logistics solutions that meet the demands of complex infrastructure projects while maintaining the highest safety standards.",
     image: "https://images.unsplash.com/photo-1508450859948-4e04fabaa4ea?q=80&w=2079&auto=format&fit=crop",
   },
   {
     id: 3,
     title: "Oil & Gas",
     subtitle: "Equipment Solutions for Demanding Energy Operations",
-    description: "The oil and gas industry requires reliable equipment and operational expertise to support its energy in challenging environments. Eagle Mountain delivers heavy lifting, transportation, equipment rentals, and logistical support tailored for upstream, midstream, and downstream operations. Our solutions are designed to enhance operational efficiency, support maintenance activities, and ensure smooth execution of energy-related projects while meeting strict environmental and compliance requirements.",
-    image: "https://images.unsplash.com/photo-1621504450181-5d156f063316?q=80&w=1974&auto=format&fit=crop",
+    description: "The oil and gas industry requires reliable equipment and operational expertise to perform safely in challenging environments. Eagle Mountain provides lifting, transportation, equipment mobilization, and logistics support for upstream, midstream, and downstream operations. Our solutions are designed to enhance operational efficiency, support maintenance activities, and ensure smooth execution of energy-related projects while meeting industry safety and compliance requirements.",
+    image: "/sector-oil-gas.webp",
   },
   {
     id: 4,
     title: "Energy & Utilities",
     subtitle: "Supporting Power Generation & Utility Infrastructure",
-    description: "Eagle Mountain delivers specialized equipment and support services for power generation facilities, utility infrastructure projects, renewable energy developments, and industrial energy operations. We assist clients with equipment transportation, maintenance support, infrastructure upgrading, and material handling, helping them maintain reliable operations and successfully complete critical energy projects with confidence and efficiency.",
+    description: "Eagle Mountain delivers specialized equipment and support services for power generation facilities, utility infrastructure projects, renewable energy developments, and industrial energy operations. We assist clients with equipment transportation, maintenance support, infrastructure upgrades, and project logistics, helping them maintain reliable operations and successfully complete critical energy projects with confidence and efficiency.",
     image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=2070&auto=format&fit=crop",
   },
   {
     id: 5,
     title: "Manufacturing",
     subtitle: "Enhancing Industrial Productivity",
-    description: "Manufacturing facilities rely on efficient material handling, equipment movement, and logistics operations to maintain productivity and operational performance. Eagle Mountain supports manufacturing environments with a wide array of specialized equipment including forklifts, heavy-duty transport, and lifting solutions required for streamlining material movement throughout production facilities. Our services help businesses optimize operations while maintaining safety and minimizing downtime.",
-    image: "https://images.unsplash.com/photo-1565610222536-f8d152549244?q=80&w=2071&auto=format&fit=crop",
+    description: "Manufacturing facilities rely on efficient material handling, equipment movement, and logistics operations to maintain productivity and operational performance. Eagle Mountain supports manufacturers through reliable equipment solutions designed to improve workflow efficiency, facilitate equipment installation and relocation, and streamline material movement throughout production facilities. Our services help businesses optimize operations while maintaining safety and minimizing downtime in dynamic manufacturing environments.",
+    image: "/sector-manufacturing.webp",
   },
   {
     id: 6,
     title: "Warehousing & Logistics",
     subtitle: "Streamlining Storage & Distribution Operations",
-    description: "Rapidly expanding e-commerce and manufacturing sectors demand optimized storage, inventory management, material handling, storage, and distribution operations. Our services are designed to help businesses optimize their supply chains, improve operational efficiency, and ensure the smooth movement of goods and equipment. Whether supplying specialized storage requirements or large-scale logistics operations, we provide reliable solutions tailored to clients' operational needs.",
+    description: "Eagle Mountain provides warehousing and logistics solutions that support efficient inventory management, material handling, storage, and distribution operations. Our services are designed to help businesses optimize their supply chains, improve operational efficiency, and ensure the smooth movement of goods and equipment. Whether supporting industrial storage requirements or large-scale logistics operations, we deliver reliable solutions tailored to our clients’ operational needs.",
     image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2070&auto=format&fit=crop",
   },
   {
     id: 7,
     title: "Ports & Transportation",
     subtitle: "Supporting Maritime & Logistics Infrastructure",
-    description: "Eagle Mountain provides material handling equipment and transportation services for ports, terminals, shipping facilities, and logistics hubs. Our expertise in material handling, heavy lifting, equipment transportation, and operational logistics enables us to support the efficient movement of goods and equipment across the maritime and transportation sectors. We work closely with clients to deliver safe, reliable, and cost-effective solutions that help optimize heavy operational efficiency and reliably support their initiatives.",
+    description: "Eagle Mountain provides specialized equipment and transportation services for ports, terminals, shipping facilities, and logistics hubs. Our expertise in cargo handling, heavy lifting, equipment transportation, and operational logistics enables us to support the efficient movement of goods and equipment across maritime and transportation sectors. We work closely with clients to deliver safe, reliable, and cost-effective solutions that enhance operational performance and support critical supply chain activities.",
     image: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=2070&auto=format&fit=crop",
   },
 ];
@@ -91,9 +91,9 @@ export default function SectorPage() {
         1. FIXED BACKGROUND IMAGE (Parallax)
         ========================================
       */}
-      <div className="fixed top-0 left-0 w-full h-screen -z-10 bg-[#1e3458]">
+      <div className="fixed top-0 left-0 w-full h-screen -z-10 bg-[linear-gradient(75.04deg,#234982_0%,rgba(35,73,130,0)_100%)]">
         <Image
-          src="https://images.unsplash.com/photo-1581094288338-2314dddb7ece?q=80&w=2070&auto=format&fit=crop"
+          src="/equipments-page-hero.webp"
           alt="Industrial Sector Overview"
           fill
           className="object-cover opacity-40 mix-blend-multiply"

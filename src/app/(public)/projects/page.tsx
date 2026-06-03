@@ -32,7 +32,7 @@ const projects = [
     title: "Downtown Commercial Tower",
     category: "Construction & Lifting",
     location: "Business Bay, Dubai",
-    image: "https://images.unsplash.com/photo-1541888086425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop",
+    image: "downtown-commercial.webp",
     description: "Provided comprehensive heavy lifting solutions and crane operations for a 45-story commercial skyscraper, ensuring safety and timeline adherence.",
   },
   {
@@ -56,7 +56,7 @@ const projects = [
     title: "Metro Line Extension",
     category: "Infrastructure",
     location: "Dubai Metro",
-    image: "https://images.unsplash.com/photo-1517581177682-a085bc7fcb10?q=80&w=2070&auto=format&fit=crop",
+    image: "/metro -line -extension.webp",
     description: "Supplied continuous material handling and heavy equipment leasing for the structural development of three new metro stations.",
   },
   {
@@ -64,7 +64,7 @@ const projects = [
     title: "Industrial Warehouse Hub",
     category: "HVAC & Construction",
     location: "Dubai Industrial City",
-    image: "https://images.unsplash.com/photo-1565610222536-f8d152549244?q=80&w=2071&auto=format&fit=crop",
+    image: "industrial-warehouse-hub.webp",
     description: "Facilitated the installation of large-scale industrial cooling systems and roof trusses using our high-reach access lifts.",
   },
   {
@@ -72,7 +72,7 @@ const projects = [
     title: "Highway Bridge Assembly",
     category: "Construction & Lifting",
     location: "Sharjah Outer Bypass",
-    image: "https://images.unsplash.com/photo-1545652985-78e734c56360?q=80&w=1974&auto=format&fit=crop",
+    image: "highway-bridge-assembly.webp",
     description: "Executed precision tandem lifts for massive pre-cast concrete bridge segments over a highly active traffic corridor.",
   },
 ];

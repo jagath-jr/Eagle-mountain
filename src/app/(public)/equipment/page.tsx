@@ -13,7 +13,7 @@ const heroData = {
   tagline: "Our Fleet",
   title: "Equipments",
   description: "Reliable Heavy Equipment & Industrial Support Solutions",
-  backgroundImage: "/equipments/Man-Lifts2.webp",
+  backgroundImage: "/equipments-page-hero.webp",
 };
 
 type LayoutType = "textLeft" | "textLeftResponsive" | "imageLeft";
