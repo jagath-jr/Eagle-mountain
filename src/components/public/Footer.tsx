@@ -109,7 +109,7 @@ export default function Footer() {
             <h3 className="text-white font-medium text-lg mb-4 md:mb-6">Company</h3>
             <ul className="space-y-3 text-gray-300 text-sm inline-block text-left">
                <li>
-                <Link href="/home" className="hover:text-white transition-colors flex items-center gap-2 group">
+                <Link href="/" className="hover:text-white transition-colors flex items-center gap-2 group">
                   <span className="text-xl leading-none group-hover:text-[#648ecc] transition-colors">&bull;</span> Home
                 </Link>
               </li>
