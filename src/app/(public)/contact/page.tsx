@@ -33,8 +33,7 @@ const slideInRight: Variants = {
 export default function ContactPage() {
   return (
     // Removed the background color from main so the fixed background can show through
-    <main className="relative min-h-screen">
-      
+<main className="relative min-h-screen overflow-x-hidden w-full">      
       {/* ========================================
         1. FIXED BACKGROUND IMAGE 
         ========================================

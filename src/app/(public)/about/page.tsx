@@ -95,8 +95,7 @@ const features = [
 
 export default function AboutPage() {
   return (
-    <main className="relative min-h-screen ">
-      
+<main className="relative min-h-screen overflow-x-hidden w-full">      
       {/* ========================================
         1. FIXED BACKGROUND IMAGE (Parallax)
         ========================================
